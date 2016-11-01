@@ -6,9 +6,16 @@
 package Movies;
 
 import common.Movie;
+import common.MoviesByTitle;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  *
@@ -31,6 +38,32 @@ public class StartUp {
         for(Object key: keys){
             Movie found = (Movie)map.get(key);
             System.out.println(found.toString());
+        }
+        
+        Map keys2 = new TreeMap(map);
+        Collection<Movie> values = keys2.values(); 
+        List<Movie> sortedList = new ArrayList<>(values);
+        System.out.println();
+        
+        Collections.sort(sortedList);
+        for(Movie m: sortedList){
+            System.out.println(m);
+        }
+        System.out.println();
+        Collections.sort(sortedList, new MoviesByTitle());
+        for(Movie m: sortedList){
+            System.out.println(m);
+        }
+        
+        Set<Movie> set = new TreeSet<Movie>();
+        set.add(movie1);
+        set.add(movie2);
+        set.add(movie3);
+        set.add(movie4);
+        
+        System.out.println("The new size of the set is " + set.size());
+        for(Movie m: set){
+            System.out.println(m);
         }
     }
 }
